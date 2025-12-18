@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-devops-config
+data:
+  REQUIRED_CONFIG: "k8s-demo"
+  APP_MODE: "normal"
+  CPU_LOAD_SECONDS: "0"

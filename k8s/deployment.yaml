@@ -19,18 +19,18 @@ spec:
       labels:
         app: ai-devops
     spec:
-      containers:
+      cont
+    envFrom:
+     - configMapRef:
+      name: ai-devops-config
+        ainers:
         - name: flask-app
           image: ai-devops-app:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
 
-          env:
-            - name: REQUIRED_CONFIG
-              value: "k8s-demo"
-            - name: APP_MODE
-              value: "normal"
+          
 
           livenessProbe:
             httpGet:
