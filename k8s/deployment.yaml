@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-devops-app
+  labels:
+    app: ai-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-devops
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: ai-devops
+    spec:
+      containers:
+        - name: flask-app
+          image: ai-devops-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+
+          env:
+            - name: REQUIRED_CONFIG
+              value: "k8s-demo"
+            - name: APP_MODE
+              value: "normal"
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
