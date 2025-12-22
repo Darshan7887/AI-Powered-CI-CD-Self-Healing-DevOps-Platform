@@ -27,11 +27,13 @@ class SelfHealingEngine:
         ]:
             action = rollback_deployment(context.get("deployment"))
 
-        return {
-            "analysis": analysis,
-            "action": action
-        }
+        report_path = generate_incident_report(analysis, action)
 
+     return {
+    "analysis": analysis,
+    "action": action,
+    "incident_report": report_path
+}
 
 if __name__ == "__main__":
     # Simulated failure event
