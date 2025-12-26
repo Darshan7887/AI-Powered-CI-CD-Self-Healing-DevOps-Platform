@@ -1,26 +1,50 @@
-# AI-Driven Cloud Cost Optimization & Monitoring System
+# AI-Powered CI/CD & Self-Healing DevOps Platform
 
 ## Overview
-An end-to-end FinOps automation system that monitors cloud usage, analyzes and predicts cloud costs, detects anomalies, and generates AI-powered optimization insights and executive-ready reports.
+This project is a **self-healing DevOps platform** that detects system failures, analyzes them using AI-assisted logic, and automatically suggests or triggers recovery actions.
 
-## Key Capabilities
-- Cloud usage data collection (EC2, S3, Lambda – simulated/real)
-- Daily & monthly cost analysis
-- AI-based cost prediction (7–30 days)
-- Anomaly detection for abnormal cost spikes
-- Human-readable AI insights & recommendations
-- Automated markdown cost reports
+In simple terms, it behaves like an **automated DevOps/SRE engineer** that:
+- notices failures,
+- understands why they happened,
+- decides what to do,
+- and documents the incident.
 
-## Tech Stack
-Python · Bash · AWS (Simulated / Deployable) · GitHub · JSON/CSV
+---
 
-## Architecture Flow
-Data Collection → Cost Analysis → AI Prediction → Anomaly Detection → AI Insights → Reporting
+## What This Project Does (Simple Explanation)
 
-## Project Structure
-collector/ · cost_engine/ · ai_engine/ · reports/ · data/ · logs/ · main.py
+1. **Simulates real failures**
+   - Application crashes
+   - Kubernetes pod failures
+   - CI/CD-related issues
 
-## How to Run
+2. **Reads failure logs**
+   - Example: `CrashLoopBackOff`, `ImagePullBackOff`, test failures
+
+3. **AI analyzes the failure**
+   - Matches logs with known failure patterns
+   - Identifies root cause and impact
+   - Suggests fixes and prevention steps
+
+4. **Self-healing logic runs**
+   - Restart pod
+   - Rollback deployment
+   - Scale application
+   - Or report only if unknown
+
+5. **Generates an incident report**
+   - What happened
+   - Why it happened
+   - What action was taken
+   - How to prevent it next time
+
+All of this can be demonstrated with **one command**.
+
+---
+
+## One-Command Demo
+
+Run the complete system using:
+
 ```bash
-python3 main.py
-
+./demo.sh
